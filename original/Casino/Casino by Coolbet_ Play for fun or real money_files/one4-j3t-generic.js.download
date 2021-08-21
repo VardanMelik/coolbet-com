@@ -1,0 +1,673 @@
+//window.one4vers20210712
+
+//Settings
+window.one4 = {};
+window.one4.config = {};
+window.one4.config.domain = 'pb.creative-serving.com';
+window.one4.config.apiurl = 'https://pb.creative-serving.com/px/pxGeneric';
+
+window.one4.callPostbackWait5 = function() {
+	setTimeout(window.one4.callPostback, 2000);
+}
+
+window.one4.callPostback = function () {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			//console.log(this.responseText);
+			window.one4.handlePostback(this.responseText)
+		}
+	};
+	xhttp.open("GET", "https://pb.creative-serving.com/pb/pbGeneric?VisitorId="+window.one4.VisitorId+"&AdvertiserId="+window.one4.AdvertiserId, true);
+	xhttp.send();
+	return false
+}
+
+window.one4.handlePostback = function (responseText) {
+	if (responseText.split(",").length<2) {
+		return 0
+	} else {
+		var eventtype = responseText.split(",")[0]
+		var clickid = responseText.split(",")[1]
+		var url = document.location.href;
+		var geo = url.indexOf(".be")>-1?"be":url.indexOf(".uk")>-1?"uk":url.indexOf("fr")>-1?"fr":"nl"
+		
+		if (window.one4.PageId.indexOf("canaldigitaal.nl")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3157247",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3157617",clickid)
+			}
+		} 
+		if (window.one4.PageId.indexOf("niedersachsen-reisen")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160459",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160458",clickid)
+			}
+		} 
+		if (window.one4.PageId.indexOf("isabelabbey.com.tr")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160491",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160490",clickid)
+			}
+		} 
+		if (window.one4.PageId.indexOf("nibe.eu")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160537",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160538",clickid)
+			}
+		} 
+		if (window.one4.PageId.indexOf("form.multinet.com.tr/MultiGift-Hediye-Karti-Ramazan-Basvuru-thanku")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160535",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160534",clickid)
+			}
+		} 
+        if (window.one4.PageId.indexOf("form.multinet.com.tr/MultiGift-Hediye-Karti-Ramazan-Basvuru")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160995",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160994",clickid)
+			}
+		} 
+		if (window.one4.PageId.indexOf("abcgruppen.se")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160607",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160606",clickid)
+			}
+		} 
+		if (window.one4.PageId.indexOf("crownstudent.com")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160605",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160604",clickid)
+			}
+		} 
+		if (window.one4.PageId.indexOf("clseifert.com/sv")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160609",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160608",clickid)
+			}
+		} 
+		if (window.one4.PageId.indexOf("bungalows.nl")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160718",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160717",clickid)
+			}
+		} 
+		if (window.one4.PageId.indexOf("weekendjeweg.nl")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160719",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160720",clickid)
+			}
+		} 
+		if (window.one4.PageId.indexOf("mein-verzeichniseintrag.de")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160716",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160715",clickid)
+			}
+		}
+		if (window.one4.PageId.indexOf("abcgruppen.se")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160607",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160606",clickid)
+			}
+		}
+		if (window.one4.PageId.indexOf("crownstudent.com")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160605",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160604",clickid)
+			}
+		}
+		if (window.one4.PageId.indexOf("clseifert.com/sv")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160609",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160608",clickid)
+			}
+		}
+        if (window.one4.PageId.indexOf("bbq.deine-auswahl24.com")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160976",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160975",clickid)
+			}
+		} 
+        if (window.one4.PageId.indexOf("gewinn.dein-gutschein24.com")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3161066",clickid)
+			} 
+		}
+        if (window.one4.PageId.indexOf("rock.grosses-los24.com")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3161202",clickid)
+			} 
+		}
+        if (window.one4.PageId.indexOf("hsb.se")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160960",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160961",clickid)
+			}
+		} 
+        if (window.one4.PageId.indexOf("hovding.com/se/")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160956",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160957",clickid)
+			}
+		} 
+        if (window.one4.PageId.indexOf("hovding.com/dk/")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3160958",clickid)
+			} else if (eventtype == "Impression") {
+				window.one4.loadP161Pixel("3160959",clickid)
+			}
+		} 
+         if (window.one4.PageId.indexOf("slotv.se/sv")>0) {
+           if (typeof(window.one4.fsgtmevent)!="undefined" && window.one4.fsgtmevent=="ftd") {
+             if (eventtype == "Click") {
+                window.one4.loadP161Pixel("3160917",clickid)
+            } else if (eventtype == "Impression") {
+                window.one4.loadP161Pixel("3160916",clickid)
+            }
+        }
+         else {
+           if (typeof(window.one4.fsgtmevent)!="undefined" && window.one4.fsgtmevent=="registration") {
+             if (eventtype == "Click") {
+                window.one4.loadP161Pixel("3160915",clickid)
+            } else if (eventtype == "Impression") {
+                window.one4.loadP161Pixel("3160914",clickid)
+                    }
+                }   
+            }
+         }
+		if (window.one4.PageId.indexOf("frankcasino.se")>0) {
+			if (typeof(window.one4.fsgtmevent)!="undefined" && window.one4.fsgtmevent=="ftd") {
+				if (eventtype == "Click") {
+					window.one4.loadP161Pixel("3160493",clickid)
+				} else if (eventtype == "Impression") {
+					window.one4.loadP161Pixel("3160495",clickid)
+				}
+			} 
+            else {
+				if (eventtype == "Click") {
+					window.one4.loadP161Pixel("3160492",clickid)
+				} else if (eventtype == "Impression") {
+					window.one4.loadP161Pixel("3160496",clickid)
+				}
+			}
+		} 
+        if (window.one4.PageId.indexOf("marijuanadoctor.com")>0) {
+			 if (window.one4.PageId.indexOf("schedule?location=")>-1){
+				if (eventtype == "Click") {
+					window.one4.loadP161Pixel("3161052",clickid);
+                    window.one4.loadP161Pixel("3161051",clickid);
+                    window.one4.loadP161Pixel("3161053",clickid)
+				} else if (eventtype == "Impression") {
+					window.one4.loadP161Pixel("3161052",clickid);
+                    window.one4.loadP161Pixel("3161051",clickid);
+                    window.one4.loadP161Pixel("3161053",clickid)
+				}
+			} 
+            else {
+				if(document.getElementById("edit-step-2-actions-next") != null) {
+                if (eventtype == "Click") {
+					window.one4.loadP161Pixel("3161054",clickid);
+                    window.one4.loadP161Pixel("3161055",clickid);
+                    window.one4.loadP161Pixel("3161056",clickid)
+				} else if (eventtype == "Impression") {
+					window.one4.loadP161Pixel("3161054",clickid);
+                    window.one4.loadP161Pixel("3161055",clickid);
+                    window.one4.loadP161Pixel("3161056",clickid)
+				}
+			}
+		} 
+    if (window.one4.PageId.indexOf("eu.wargaming.net/registration/de/")>0) {
+			if (eventtype == "Click") {
+				window.one4.loadP161Pixel("3161142",clickid)
+			}
+    }
+    if (window.one4.PageId.indexOf("worldoftanks.eu")>-1) {
+        if (eventtype == "Click") {
+            window.one4.loadP161Pixel("3161143",clickid)
+        }
+    }
+        }
+		return 0
+	}
+};
+
+//Generic Library
+(function () {
+	if (this.one4d)
+		return;
+
+	function get(key) {
+		var tmp = document.cookie.match('(^|; )' + key + '=([^;]*)');
+		if (!tmp || !tmp[2])
+			return null;
+		else
+			return decodeURIComponent(tmp[2]) || null;
+	}
+
+	function hoursToExpireDate(ttl) {
+		if (parseInt(ttl) == 'NaN')
+			return '';
+		else {
+			var now = new Date();
+			now.setTime(now.getTime() + (parseInt(ttl) * 60 * 60 * 1000));
+			return now.toGMTString();
+		}
+	}
+
+	function set(key, value, ttl, path, domain, secure) {
+		var cookie = [
+			key + '=' + encodeURIComponent(value)];
+		if (ttl)
+			cookie.push('expires=' + hoursToExpireDate(ttl));
+		if (typeof path !== 'undefined') {
+			cookie.push('path=' + (!path ? '/' : path));
+			if (!domain) domain = window.location.hostname;
+			if (domain.indexOf('.') > 0) cookie.push('domain=' + domain);
+		}
+		if (secure)
+			cookie.push('secure');
+		return document.cookie = cookie.join('; ');
+	}
+
+	function unset(key, path, domain) {
+		if (get(key))
+			set(key, '', -720, path, domain);
+	}
+
+
+	function test() {
+		set('b49f729efde9b2578ea9f00563d06e57', 'true');
+		if (get('b49f729efde9b2578ea9f00563d06e57') == 'true') {
+			unset('b49f729efde9b2578ea9f00563d06e57');
+			return true;
+		}
+		return false;
+	}
+
+	this.one4d = {
+		cookies: {
+			get: get,
+			set: set,
+			unset: unset,
+			hoursToExpireDate: hoursToExpireDate,
+			test: test
+		}
+	};
+}).call(this);
+
+window.one4.getPageName = function() {
+	var ret = location.href.split("?")[0];
+	if (ret.indexOf("//")>-1) {
+		ret = ret.substring(ret.indexOf("//")+2);
+		if (ret.indexOf("/")>-1) {
+			ret = ret.substring(ret.indexOf("/")+1);
+			if (ret=="") {
+				ret="home"
+			} else if (ret.charAt(ret.length-1)=="/") {
+				ret=ret.substring(0,ret.length-1);
+			}
+		}
+	}
+	return ret
+};
+
+window.one4.getCookieValue = function(name, fun, lifetime) {
+	var value = one4d.cookies.get(name)
+	if (!value) {
+		value = fun();
+		one4d.cookies.set(name, value, lifetime*24);
+	}
+	return value;
+}
+
+window.one4.getRandomId = function() {
+	return 'xxxxxxxx-xxxx-xxxx'.replace(/[xy]/g, function(c) {var r = Math.random()*10|0, v = c == 'x' ? r : (r&0x3|0x8);return v.toString(10);});
+}	
+	
+window.one4.getSessionID = function() {
+	return window.one4.getCookieValue('one4-sessionid',window.one4.getRandomId,0.0208)
+}
+
+window.one4.getVisitorID = function() {
+	return window.one4.getCookieValue('one4-visitorid',window.one4.getRandomId,365)
+}
+
+window.one4.getPageLoadTime = function() {
+	if (typeof window.performance === 'object' && window.performance.timing) {
+		return window.performance.timing.domContentLoadedEventStart - window.performance.timing.navigationStart;
+	} else {
+		return ""
+	}
+}
+
+window.one4.getReferringURL = function() {
+	var ref = !document.referrer?"":document.referrer;
+	return ref;
+}
+
+window.one4.getClickID = function () {
+	var u = document.location.href
+	if (u.split("?").length>1) {
+		var qp = u.split("?")[1];
+		if (qp.length==36 && qp.indexOf("=")<0) {
+			return u.split("?")[1] 
+		}
+	}; return ""
+}
+
+window.one4.sendPixel = function(data, eventName) {
+	if (typeof(data) == 'undefined' || typeof(eventName) == 'undefined') {
+		return;
+	};
+
+	window.one4.img  = document.createElement('img');
+	window.one4.imgsrc = window.one4.config.apiurl + '?EventName=' + encodeURIComponent(eventName);
+	window.one4.imgsrc += typeof(data.PageId)=='undefined' || data.PageId== '' ? '' : '&PageId=' + encodeURIComponent(data.PageId);
+	window.one4.imgsrc += typeof(data.SessionId)=='undefined' || data.SessionId== '' ? '' : '&SessionId=' + encodeURIComponent(data.SessionId);
+	window.one4.imgsrc += typeof(data.VisitorId)=='undefined' || data.VisitorId== '' ? '' : '&VisitorId=' + encodeURIComponent(data.VisitorId);
+	window.one4.imgsrc += typeof(data.WebsiteDomain)=='undefined' || data.WebsiteDomain== '' ? '' : '&WebsiteDomain=' + encodeURIComponent(data.WebsiteDomain);
+	window.one4.imgsrc += typeof(data.ClickId)=='undefined' || data.ClickId== '' ? '' : '&ClickId=' + encodeURIComponent(data.ClickId);
+	window.one4.imgsrc += typeof(data.AdvertiserId)=='undefined' || data.AdvertiserId== '' ? '' : '&Advertiser=' + encodeURIComponent(data.AdvertiserId);
+	window.one4.img.src = "https://ads.creative-serving.com/cm?redir="+window.one4.imgsrc+"&P161VisitorId=${UUID}"
+	//console.log('Pixel send (' + eventName + '):' + window.one4.imgsrc);
+	document.getElementsByTagName('body')[0].appendChild(window.one4.img)
+}
+
+
+
+window.one4.loadP161Pixel = function (pixelid,clickid) {
+	pixel = "https://ads.creative-serving.com/s2s_pixel?id="+pixelid+"&imp_id=";
+	pixel += clickid;			
+		
+	var img  = document.createElement('img');
+	img.src = pixel	
+	document.getElementsByTagName('body')[0].appendChild(img)	
+	window.one4.sspixel = pixel;
+	return 1;
+};
+
+window.one4.getAdvertiserid = function(url) {
+	if (typeof(url) == 'undefined') {
+		return "1"
+	}
+	if (url.indexOf("isabelabbey.com.tr")>-1) {
+		return "635189"
+	}	
+	if (url.indexOf("niedersachsen-reisen")>-1) {
+		return "624131"
+	}	
+	if (url.indexOf("frankcasino.se")>-1) {
+		return "634060"
+	}
+	if (url.indexOf("nibe.eu")>-1) {
+		return "612296"
+	}
+	if (url.indexOf("gdmgroup")>-1) {
+		return "631521"
+	}
+	if (url.indexOf("multinet.com")>-1) {
+		return "635595"
+	}
+	if (url.indexOf("abcgruppen.se")>-1) {
+		return "626141"
+	}
+	if (url.indexOf("crownstudent.com")>-1) {
+		return "626142"
+	}
+	if (url.indexOf("clseifert.com/sv")>-1) {
+		return "625035"
+	}
+	if (url.indexOf("bungalows.nl")>-1) {
+		return "625216"
+	}
+	if (url.indexOf("weekendjeweg.nl")>-1) {
+		return "625215"
+	}
+	if (url.indexOf("mein-verzeichniseintrag.de")>-1) {
+		return "634882"
+	}
+    if (url.indexOf("bbq.deine-auswahl24.com")>-1) {
+		return "636071"
+	}
+    if (url.indexOf("gewinn.dein-gutschein24.com")>-1) {
+		return "636071"
+	}
+    if (url.indexOf("hsb.se")>-1) {
+        return "635575"
+	}
+    if (url.indexOf("hovding.com")>-1) {
+        return "632467"
+    }
+    if (url.indexOf("slotv.se/sv")>-1) {
+        return "634059"
+    }
+    if (url.indexOf("marijuanadoctor.com")>-1) {
+	   return "628645"
+    }
+    if (url.indexOf("eu.wargaming.net")>-1){
+        return "635585"
+    }
+    if (url.indexOf("worldoftanks.eu")>-1) {
+        return "635585"
+    }
+    if (url.indexOf("rock.grosses-los24.com")>-1){
+        return "636071"
+    }
+    if (url.indexOf("canaldigitaal.nl")>-1) {
+		return "602522"
+	};
+	return "2"
+}
+//
+//Data
+
+window.one4.PageId = document.location.href;
+window.one4.SessionId = typeof(sessionStorage) == null ? window.one4.getSessionID() : sessionStorage.one4_sessionid = sessionStorage.one4_sessionid || window.one4.getSessionID();
+window.one4.VisitorId = window.one4.getVisitorID();
+window.one4.WebsiteDomain = window.one4.domain;
+window.one4.ClickId = window.one4.getClickID();
+window.one4.AdvertiserId = window.one4.getAdvertiserid(window.one4.PageId);
+
+window.one4.pxldata = {};
+window.one4.pxldata.PageId = window.one4.PageId;
+window.one4.pxldata.SessionId = window.one4.SessionId;
+window.one4.pxldata.VisitorId = window.one4.VisitorId;
+window.one4.pxldata.WebsiteDomain = window.one4.WebsiteDomain;
+window.one4.pxldata.ClickId = window.one4.ClickId
+window.one4.pxldata.AdvertiserId = window.one4.AdvertiserId
+
+window.one4.checkGTMEvent = function(eventname) {
+	if (typeof(dataLayer) == 'undefined' || typeof(eventname) == 'undefined') {
+		return 0;
+	};
+	var found=0;
+	for(var i=0;i<dataLayer.length;i++) {
+		if(dataLayer[i].event==eventname) { 
+			found=1 
+			window.one4.fsgtmevent= dataLayer[i].event
+		}
+	};
+	return found
+}
+
+window.one4.conversionCheck = function () {
+	if (window.one4.PageId.indexOf("one4data") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');
+	};
+	if (window.one4.PageId.indexOf("canaldigitaal.nl") >-1 ) {
+		if (typeof(window.dataLayer)!="undefined" && typeof(window.dataLayer[0])!="undefined" && typeof(window.dataLayer[0].pageTemplate)!="undefined") {
+			if (window.one4.PageId.indexOf("bedankt")>-1) {
+				window.one4.sendPixel(window.one4.pxldata, 'PageView');
+				window.one4.callPostbackWait5()	
+			}
+		}
+	}
+	if (window.one4.PageId.indexOf("isabelabbey.com.tr") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("SiparisTamamlandi")>-1) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+	if (window.one4.PageId.indexOf("niedersachsen-reisen") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("success")>-1) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+	if (window.one4.PageId.indexOf("frankcasino.se") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.checkGTMEvent("registration")>0 || window.one4.checkGTMEvent("fts")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+    if (window.one4.PageId.indexOf("slotv.se/sv") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.checkGTMEvent("registration")>0 || window.one4.checkGTMEvent("fts")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+	if (window.one4.PageId.indexOf("nibe.eu") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("nibe.eu/sv-se/tack-experthjalp")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+	if (window.one4.PageId.indexOf("form.multinet.com.tr/MultiGift-Hediye-Karti-Ramazan-Basvuru-thanku") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("MultiGift-Hediye-Karti-Ramazan-Basvuru-thanku")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+    if (window.one4.PageId.indexOf("form.multinet.com.tr/MultiGift-Hediye-Karti-Ramazan-Basvuru") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (document.getElementById("btn btn-success")>0 || document.getElementById("webform-button--submit button button--primary js-form-submit form-submit")>0){
+			window.one4.callPostbackWait5()	
+		}
+	}
+	if (window.one4.PageId.indexOf("abcgruppen.se") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("thankyou")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+	if (window.one4.PageId.indexOf("crownstudent.com") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("kassan/framgang")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+	if (window.one4.PageId.indexOf("clseifert.com/sv") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("sv/payment/receipt")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+	if (window.one4.PageId.indexOf("bungalows.nl") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("bedankt")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+	if (window.one4.PageId.indexOf("weekendjeweg.nl") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("bedankt")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+	if (window.one4.PageId.indexOf("mein-verzeichniseintrag.de") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (document.getElementById("step-icon-4") != null) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+    if (window.one4.PageId.indexOf("bbq.deine-auswahl24.com") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("bbq.deine-auswahl24.com")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+    if (window.one4.PageId.indexOf("gewinn.dein-gutschein24.com") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("gewinn.dein-gutschein24.com")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+    if (window.one4.PageId.indexOf("rock.grosses-los24.com") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("rock.grosses-los24.com")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+     if (window.one4.PageId.indexOf("hovding.com/se/") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.checkGTMEvent("ny_order")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+    if (window.one4.PageId.indexOf("hovding.com/dk/") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.checkGTMEvent("ny_order")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+   if (window.one4.PageId.indexOf("eu.wargaming.net") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (window.one4.PageId.indexOf("registration/de")>0) {
+			window.one4.callPostbackWait5()	
+		}
+	}
+    if (window.one4.PageId.indexOf("worldoftanks.eu") >-1 ) {
+        window.one4.sendPixel(window.one4.pxldata, 'PageView');
+        if (document.getElementById("big-button_text") != null) {
+            window.one4.callPostbackWait5()
+        }
+    }
+    if (window.one4.PageId.indexOf("hsb.se") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if (
+            (window.one4.PageId.indexOf("bekrintressenamn=tollare")>0 && (window.one4.PageId.indexOf("intresseanmalan-steg-2")>0)) || 
+            (window.one4.PageId.indexOf("bekrintressenamn=finnboda")>0 && (window.one4.PageId.indexOf("intresseanmalan-steg-2")>0)) ||
+            (window.one4.PageId.indexOf("bekrintressenamn=fyrhusen")>0 && (window.one4.PageId.indexOf("intresseanmalan-steg-2")>0)) ||
+            (window.one4.PageId.indexOf("bekrintressenamn=kajen")>0 && (window.one4.PageId.indexOf("intresseanmalan-steg-2")>0)) ||
+            (window.one4.PageId.indexOf("bekrintressenamn=silverskatten")>0  && (window.one4.PageId.indexOf("intresseanmalan-steg-2")>0)) ||
+            (window.one4.PageId.indexOf("bekrintressenamn=trim")>0  && (window.one4.PageId.indexOf("intresseanmalan-steg-2")>0)) ||
+            (window.one4.PageId.indexOf("bekrintressenamn=atomen")>0  && (window.one4.PageId.indexOf("intresseanmalan-steg-2")>0)) ||
+            (window.one4.PageId.indexOf("bekrintressenamn=kungsvyn")>0  && (window.one4.PageId.indexOf("intresseanmalan-steg-2")>0))
+        )
+            {
+			window.one4.callPostbackWait5()	
+		}
+	}
+    if (window.one4.PageId.indexOf("marijuanadoctor.com") >-1 ) {
+		window.one4.sendPixel(window.one4.pxldata, 'PageView');	
+		if  (
+            (window.one4.PageId.indexOf("marijuanadoctor.com/schedule?location=")) ||
+            (document.getElementById("edit-step-2-actions-next") != null)
+        )
+        {
+			window.one4.callPostbackWait5()	
+		}
+	}
+    
+	return 1;
+};
+
+window.one4.conversionCheck();

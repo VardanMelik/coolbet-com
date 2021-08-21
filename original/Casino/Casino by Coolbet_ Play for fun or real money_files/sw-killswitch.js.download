@@ -1,0 +1,22 @@
+// sw-killswitch
+
+function unregisterServiceWorker() {
+    if (window.navigator && window.navigator.serviceWorker) {
+        window.navigator.serviceWorker.ready.then(registration => {
+            registration.unregister();
+        });
+
+        window.navigator.serviceWorker
+            .getRegistrations()
+            .then(function(registrations) {
+                for (var registration of registrations) {
+                    registration.unregister();
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+}
+
+// unregisterServiceWorker();

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://consentcdn.cookiebot.com/sdk/bc-v3.min.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><script type="text/javascript" data-name="TokenSigning">(function() {
+    // Promises
+    var _eid_promises = {};
+    // Turn the incoming message from extension
+    // into pending Promise resolving
+    window.addEventListener("message", function(event) {
+        if (event.source !== window) return;
+        if (event.data.src && (event.data.src === "background.js")) {
+            console.log("Page received: ");
+            console.log(event.data);
+            // Get the promise
+            if (event.data.nonce) {
+                var p = _eid_promises[event.data.nonce];
+                // resolve
+                if (event.data.result === "ok") {
+                    if (event.data.signature !== undefined) {
+                        p.resolve({hex: event.data.signature});
+                    } else if (event.data.version !== undefined) {
+                        p.resolve(event.data.extension + "/" + event.data.version);
+                    } else if (event.data.cert !== undefined) {
+                        p.resolve({hex: event.data.cert});
+                    } else {
+                        console.log("No idea how to handle message");
+                        console.log(event.data);
+                    }
+                } else {
+                    // reject
+                    p.reject(new Error(event.data.result));
+                }
+                delete _eid_promises[event.data.nonce];
+            } else {
+                console.log("No nonce in event msg");
+            }
+        }
+    }, false);
+
+    window.TokenSigning = function() {
+        function nonce() {
+            var val = "";
+            var hex = "abcdefghijklmnopqrstuvwxyz0123456789";
+            for (var i = 0; i < 16; i++) val += hex.charAt(Math.floor(Math.random() * hex.length));
+            return val;
+        }
+
+        function messagePromise(msg) {
+            return new Promise(function(resolve, reject) {
+                // amend with necessary metadata
+                msg["nonce"] = nonce();
+                msg["src"] = "page.js";
+                // send message
+                window.postMessage(msg, "*");
+                // and store promise callbacks
+                _eid_promises[msg.nonce] = {
+                    resolve: resolve,
+                    reject: reject
+                };
+            });
+        }
+        this.getCertificate = function(options) {
+            var msg = {type: "CERT", lang: options.lang, filter: options.filter};
+            console.log("getCertificate()");
+            return messagePromise(msg);
+        };
+        this.sign = function(cert, hash, options) {
+            var msg = {type: "SIGN", cert: cert.hex, hash: hash.hex, hashtype: hash.type, lang: options.lang, info: options.info};
+            console.log("sign()");
+            return messagePromise(msg);
+        };
+        this.getVersion = function() {
+            console.log("getVersion()");
+            return messagePromise({
+                type: "VERSION"
+            });
+        };
+    };
+})();</script></head><body><script>(function(){function n(n,t){t=t||{bubbles:!1,cancelable:!1,detail:null};var i=document.createEvent("CustomEvent");return i.initCustomEvent(n,t.bubbles,t.cancelable,t.detail),i}if(typeof window.CustomEvent=="function")return!1;window.CustomEvent=n})(),function(){function t(){}function n(){}var u="CookieConsentBulkSetting-",r="sessionStorageUpdated",i,f;this.handleRequest=function(i){function c(n){i.source.postMessage(n,i.origin)}var r,o,f,s,h,e;try{if(r=i.data,o=typeof r=="string",o&&(r=JSON.parse(r)),f=u+r.serial,r.action==="get"){s=t.getData(f);n.getData(f,function(n){var t=s||n;t?c(t):c("bcEmpty")});return}h=r.value.expireMonths===0;e=t;h&&(e=n);switch(r.action){case"set":e.setData(f,r.value);break;case"remove":e.removeData(f)}}catch(l){}};t.getData=function(n,t){var i=JSON.parse(localStorage.getItem(n));return t&&t(i),i};t.setData=function(n,t){localStorage.setItem(n,JSON.stringify(t))};t.removeData=function(n){localStorage.removeItem(n)};i=undefined;f=300;n.getData=function(t,u){var e=sessionStorage.getItem(t);e?u(JSON.parse(e)):(window.addEventListener(r,function(){typeof i=="number"&&window.clearTimeout(i);i=undefined;e=JSON.parse(sessionStorage.getItem(t));u(e)}),n.pulseLocalStorage("req",t),i=window.setTimeout(function(){window.dispatchEvent(new CustomEvent(r,{detail:{answerReceived:!1}}))},f))};n.setData=function(t,i){var u=typeof i=="string",r;r=u?i:JSON.stringify(i);sessionStorage.setItem(t,r);n.pulseLocalStorage("msg",r)};n.removeData=function(n){sessionStorage.removeItem(n)};n.pulseLocalStorage=function(n,t){localStorage.setItem(n,t);localStorage.removeItem(n)};n.msgCallBack=function(t){var i,f;switch(t.key){case"req":i=t.newValue;sessionStorage.getItem(i)&&n.pulseLocalStorage("msg",sessionStorage.getItem(i));break;case"msg":t.newValue!==null&&(f=JSON.parse(t.newValue),i=u+f.serial,t.newValue!==sessionStorage.getItem(i)&&n.setData(i,t.newValue),window.dispatchEvent(new CustomEvent(r,{detail:{answerReceived:!0}})))}};window.addEventListener("message",this.handleRequest,!1);window.addEventListener("storage",n.msgCallBack,!1)}()</script></body></html>
